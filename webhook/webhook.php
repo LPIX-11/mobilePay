@@ -34,8 +34,7 @@
  ***************************************************************************/
  
  
-	 //Config
-
+	//Config
 	$merchant_secret = 'sk_test_V0fmtvV7C8yvQ4SHlMaISfAGDxOAkuYH3zqSQxNzbbBe';    // ****************** PUT YOUR MERCHANT SECRET HERE (you can get it in your WeCashUp merchant dashboard) ***************
 			
 	// Create and initialize variables to be sent to confirm the that the ongoing transaction is associated with the current merchant
@@ -47,39 +46,38 @@
 	$received_transaction_token = null;//create an empty received_transaction_token
 	$authenticated = 'false'; //create an authentification boolean and initialize it at false
 	
-
 	//extracting data from the post and filling the variable above
-	if(isset($_POST['merchant_secret'])){
-		$received_transaction_merchant_secret = $_POST['merchant_secret']; //Get the merchant_secret posted by WeCashUp.
+	if(isset(filter_input(INPUT_GET, 'merchant_secret'))) {
+		$received_transaction_merchant_secret = filter_input(INPUT_GET, 'merchant_secret'); //Get the merchant_secret posted by WeCashUp.
 		
 	}
 	
-	if(isset($_POST['transaction_uid'])){
-		$received_transaction_uid = $_POST['transaction_uid']; //Get the transaction_uid posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_uid'))) {
+		$received_transaction_uid = filter_input(INPUT_GET, 'transaction_uid'); //Get the transaction_uid posted by WeCashUp
 	}
 
-	if(isset($_POST['transaction_status'])){
-		$received_transaction_status  = $_POST['transaction_status']; //Get the transaction_status posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_status'))) {
+		$received_transaction_status  = filter_input(INPUT_GET, 'transaction_status'); //Get the transaction_status posted by WeCashUp
 	}
 
-	if(isset($_POST['transaction_amount'])){
-		$received_transaction_amount  = $_POST['transaction_amount']; //Get the transaction_amount posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_amount'))) {
+		$received_transaction_amount  = filter_input(INPUT_GET, 'transaction_amount'); //Get the transaction_amount posted by WeCashUp
 	}
 	
-	if(isset($_POST['transaction_receiver_currency'])){
-		$received_transaction_receiver_currency  = $_POST['transaction_receiver_currency']; //Get the transaction_amount posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_receiver_currency'))) {
+		$received_transaction_receiver_currency  = filter_input(INPUT_GET, 'transaction_receiver_currency'); //Get the transaction_amount posted by WeCashUp
 	}
 	
-	if(isset($_POST['transaction_details'])){
-		$received_transaction_details  = $_POST['transaction_details']; //Get the transaction_details posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_details'))) {
+		$received_transaction_details  = filter_input(INPUT_GET, 'transaction_details'); //Get the transaction_details posted by WeCashUp
 	}
 	
-	if(isset($_POST['transaction_token'])){
-		$received_transaction_token  = $_POST['transaction_token']; //Get the transaction_token posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_token'))) {
+		$received_transaction_token  = filter_input(INPUT_GET, 'transaction_token'); //Get the transaction_token posted by WeCashUp
 	}
 	
-	if(isset($_POST['transaction_type'])){
-		$received_transaction_type  = $_POST['transaction_type']; //Get the transaction_type posted by WeCashUp
+	if(isset(filter_input(INPUT_GET, 'transaction_type'))) {
+		$received_transaction_type  = filter_input(INPUT_GET, 'transaction_type'); //Get the transaction_type posted by WeCashUp
 	}	
 	
 		echo '<br><br> received_transaction_merchant_secret : '.$received_transaction_merchant_secret;
@@ -113,7 +111,7 @@
 		
 	
 	//Authentification |We make sure that the received data come from a system that knows our secret key (WeCashUp only)
-	if($received_transaction_merchant_secret !=null && $received_transaction_merchant_secret == $merchant_secret){
+	if($received_transaction_merchant_secret !=null && $received_transaction_merchant_secret == $merchant_secret) {
 		//received_transaction_merchant_secret is Valid
 		
 		echo '<br><br> merchant_secret [MATCH]'; 
@@ -123,12 +121,12 @@
 		$database_transaction_uid = 'TEST_UID';//************* LOAD FROM YOUR DATABASE ****************
 		$database_transaction_token = 'TEST_TOKEN';//************* LOAD FROM YOUR DATABASE ****************
 		
-		if($received_transaction_uid != null && $received_transaction_uid == $database_transaction_uid){
+		if($received_transaction_uid != null && $received_transaction_uid == $database_transaction_uid) {
 			//received_transaction_merchant_secret is Valid
 			
 			echo '<br><br> transaction_uid [MATCH]'; 
 			
-			if($received_transaction_token  != null && $received_transaction_token == $database_transaction_token){
+			if($received_transaction_token  != null && $received_transaction_token == $database_transaction_token) {
 				//received_transaction_token is Valid 
 				
 				echo '<br><br> transaction_token [MATCH]'; 
@@ -142,11 +140,10 @@
 	
 	echo '<br><br>authenticated : '.$authenticated;
 	
-	if($authenticated == 'true'){
+	if($authenticated == 'true') {
 		
-		//Update and process your transaction
-		
-		if($received_transaction_status =="PAID"){
+		//Update and process your transaction		
+		if($received_transaction_status == "PAID") {
 
 			//Save the transaction status in your database and do wathever you want to tell the user that it's transaction succeed
 			echo '<br><br> transaction_status : '.$transaction_status;
@@ -189,6 +186,6 @@
    
    If you are here it means that you are done with the WeCashUp's integration, we wish you to make lot of money and become billionaire.
    If so ma broda ma sista, please don't forget to buy me a bear *_*.
-/*
+*/
 
 ?>
