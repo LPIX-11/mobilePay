@@ -86,13 +86,13 @@
 		$received_transaction_type  = filter_input(INPUT_GET, 'transaction_type'); //Get the transaction_type posted by WeCashUp
 	}	
 	
-		echo '<br><br> received_transaction_merchant_secret : '.$received_transaction_merchant_secret;
-		echo '<br><br> received_transaction_uid : '.$received_transaction_uid;
-		echo '<br><br> received_transaction_token : '.$received_transaction_token;
-		echo '<br><br> received_transaction_details : '.$received_transaction_details;
-		echo '<br><br> received_transaction_amount : '.$received_transaction_amount;
-		echo '<br><br> received_transaction_status : '.$received_transaction_status;
-		echo '<br><br> received_transaction_type : '.$received_transaction_type;
+		// echo '<br><br> received_transaction_merchant_secret : '.$received_transaction_merchant_secret;
+		// echo '<br><br> received_transaction_uid : '.$received_transaction_uid;
+		// echo '<br><br> received_transaction_token : '.$received_transaction_token;
+		// echo '<br><br> received_transaction_details : '.$received_transaction_details;
+		// echo '<br><br> received_transaction_amount : '.$received_transaction_amount;
+		// echo '<br><br> received_transaction_status : '.$received_transaction_status;
+		// echo '<br><br> received_transaction_type : '.$received_transaction_type;
 		
 		/***** SAVE THIS IN YOUD DATABASE - start ****************/
 			
@@ -120,7 +120,7 @@
 	if($received_transaction_merchant_secret !=null && $received_transaction_merchant_secret == $merchant_secret) {
 		//received_transaction_merchant_secret is Valid
 		
-		echo '<br><br> merchant_secret [MATCH]'; 
+		// echo '<br><br> merchant_secret [MATCH]'; 
 		
 		//Now check if you have a transaction with the received_transaction_uid and received_transaction_token
 		
@@ -130,12 +130,12 @@
 		if($received_transaction_uid != null && $received_transaction_uid == $database_transaction_uid) {
 			//received_transaction_merchant_secret is Valid
 			
-			echo '<br><br> transaction_uid [MATCH]'; 
+			// echo '<br><br> transaction_uid [MATCH]'; 
 			
 			if($received_transaction_token  != null && $received_transaction_token == $database_transaction_token) {
 				//received_transaction_token is Valid 
 				
-				echo '<br><br> transaction_token [MATCH]'; 
+				// echo '<br><br> transaction_token [MATCH]'; 
 				
 				//All the 3 parameters match, so...
 				$authenticated = 'true';
@@ -144,7 +144,7 @@
 		}
 	}
 	
-	echo '<br><br>authenticated : '.$authenticated;
+	// echo '<br><br>authenticated : '.$authenticated;
 	
 	if($authenticated == 'true') {
 		
@@ -152,12 +152,12 @@
 		if($received_transaction_status == "PAID") {
 
 			//Save the transaction status in your database and do wathever you want to tell the user that it's transaction succeed
-			echo '<br><br> transaction_status : '.$transaction_status;
+			// echo '<br><br> transaction_status : '.$transaction_status;
 			
 		}else{ //Status = FAILED
 			
 			//Save the transaction status in your database and do wathever you want to tell the user that it's transaction failed
-			echo '<br><br> transaction_status : '.$transaction_status;
+			// echo '<br><br> transaction_status : '.$transaction_status;
 		}
 		
 	/***** SAVE THIS IN YOUD DATABASE - start ****************/
