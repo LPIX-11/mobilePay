@@ -1,4 +1,10 @@
 <?php
+	
+	/**
+	 * @author Mohamed Johnson
+	 * Security Issues Fixed
+	 * 04/2019
+	 */
 
 	header('Access-Control-Allow-Origin: *');
 	header('Access-Control-Allow-Methods: GET, POST');
@@ -29,7 +35,8 @@
 	}
 	$url = 'https://www.wecashup.com/api/v2.0/merchants/'. $merchant_uid . '/transactions/' . $transaction_uid . '?merchant_public_key=' . $merchant_public_key;
 
-	echo $url;
+	// If you want to print out the url
+	// echo $url;
 
 	//Steps 7 : You must complete this script at this to save the current transaction in your database.
 	/* Provide a table with at least 5 columns in your database capturing the following

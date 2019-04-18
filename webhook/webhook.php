@@ -1,6 +1,12 @@
 
 <?php 
 
+	/**
+	 * @author Mohamed Johnson
+	 * Security Issues Fixed
+	 * 04/2019
+	 */
+
 /****************************VERY IMPORTANT TO READ ***************************
 
                             WECASHUP DEFAULT WEBHOOK                      
