@@ -80,19 +80,19 @@
 	if($data['response_status'] == "success") {
 		
 		//Do wathever you want to tell the user that it's transaction succeed or redirect him/her to a success page
-		
-		
-		$location = 'https://www.wecashup.cloud/cdn/tests/websites/PHP/responses_pages/success.html';
+		echo "Success";
+		print_r($data);
+		// $location = 'https://www.wecashup.cloud/cdn/tests/websites/PHP/responses_pages/success.html';
 		
 		///
 	} else {
 		
 		//Do wathever you want to tell the user that it's transaction failed or redirect him/her to a failure page
 		
-		$location = 'https://www.wecashup.cloud/cdn/tests/websites/PHP/responses_pages/failure.html';
+		// $location = 'https://www.wecashup.cloud/cdn/tests/websites/PHP/responses_pages/failure.html';
 	}
 
 	//redirect to your feedback page
-	echo '<script>top.window.location = "'.$location.'"</script>';
+	// echo '<script>top.window.location = "'.$location.'"</script>';
 ?>
 
